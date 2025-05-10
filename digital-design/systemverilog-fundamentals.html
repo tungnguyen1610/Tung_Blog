@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                        <meta charset="utf-8" />
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                        <meta name="generator" content="Pelican" />
+                        <title>SystemVerilog Coding Essentials</title>
+                        <link rel="stylesheet" href="/theme/css/main.css" />
+                                <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="T_Blog Atom Feed" />
+    <meta name="description" content="SystemVerilog concepts including assignments, procedures, and language features." />
+        </head>
+
+        <body id="index" class="home">
+                <header id="banner" class="body">
+                        <h1><a href="/">T_Blog</a></h1>
+                        <nav><ul>
+                                                <li class="active"><a href="/category/digital-design.html">Digital Design</a></li>
+                                                <li><a href="/category/embedded-systems.html">Embedded Systems</a></li>
+                        </ul></nav>
+                </header><!-- /#banner -->
+  <section id="content" class="body">
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/digital-design/systemverilog-fundamentals.html" rel="bookmark"
+             title="Permalink to SystemVerilog Coding Essentials">SystemVerilog Coding Essentials</a></h1>
+      </header>
+
+      <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2025-05-10T00:00:00+07:00">
+                Published: Sat 10 May 2025
+        </abbr>
+
+                <address class="vcard author">
+                        By                                 <a class="url fn" href="/author/tung-nguyen.html">Tung Nguyen</a>
+                </address>
+        <p>In <a href="/category/digital-design.html">Digital Design</a>.</p>
+        
+</footer><!-- /.post-info -->        <h2>Assignments in SystemVerilog</h2>
+<ul>
+<li><strong>Blocking Assignment (<code>=</code>)</strong>: Executes sequentially.</li>
+<li><strong>Non-Blocking Assignment (<code>&lt;=</code>)</strong>: All updates scheduled at end of time step.</li>
+</ul>
+<h2>Types of Assignments</h2>
+<ul>
+<li><strong>Procedural Assignments</strong>: Used in <code>always</code>, <code>initial</code>, <code>task</code>, <code>function</code>.</li>
+<li><strong>Continuous Assignments</strong>: Assigned directly to <code>wire</code>.</li>
+</ul>
+<blockquote>
+<p>Note: <code>if</code>, <code>else</code>, and <code>case</code> must be used <strong>within procedural blocks</strong>.</p>
+</blockquote>
+<h2>SystemVerilog Features</h2>
+<ul>
+<li><strong>Classes &amp; Inheritance</strong>: For OOP-style modeling.</li>
+<li><strong>Randomization</strong>: Use <code>rand</code> and <code>constraint</code> for random test generation.</li>
+<li><strong>Bit Ordering</strong>: <code>[2:0]</code> means MSB (<code>2</code>) to LSB (<code>0</code>).</li>
+</ul>
+<h2>Modules</h2>
+<p>```systemverilog
+module example (
+  input logic clk,
+  input logic rst,
+  output logic [2:0] out
+);
+// ...
+endmodule</p>
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+                <section id="extras" class="body">
+                                <div class="social">
+                                        <h2>social</h2>
+                                        <ul>
+                                                        <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                                        </ul>
+                                </div><!-- /.social -->
+                </section><!-- /#extras -->
+
+                <footer id="contentinfo" class="body">
+                        <address id="about" class="vcard body">
+                                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                        </address><!-- /#about -->
+
+                        <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+                </footer><!-- /#contentinfo -->
+
+        </body>
+</html>

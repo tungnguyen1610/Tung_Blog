@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                        <meta charset="utf-8" />
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                        <meta name="generator" content="Pelican" />
+                        <title>T_Blog - Bootloader</title>
+                        <link rel="stylesheet" href="/theme/css/main.css" />
+                                <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="T_Blog Atom Feed" />
+        </head>
+
+        <body id="index" class="home">
+                <header id="banner" class="body">
+                        <h1><a href="/">T_Blog</a></h1>
+                        <nav><ul>
+                                                <li><a href="/category/digital-design.html">Digital Design</a></li>
+                                                <li><a href="/category/embedded-systems.html">Embedded Systems</a></li>
+                        </ul></nav>
+                </header><!-- /#banner -->
+
+                <aside id="featured" class="body">
+                    <article>
+                        <h1 class="entry-title"><a href="/embedded-systems/intro-linux.html">Intro to Embedded Linux</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2025-05-09T00:00:00+07:00">
+                Published: Fri 09 May 2025
+        </abbr>
+
+                <address class="vcard author">
+                        By                                 <a class="url fn" href="/author/tung-nguyen.html">Tung Nguyen</a>
+                </address>
+        <p>In <a href="/category/embedded-systems.html">Embedded Systems</a>.</p>
+<p>tags: <a href="/tag/beaglebone-black.html">Beaglebone Black</a> <a href="/tag/soc.html">SoC</a> <a href="/tag/linux.html">Linux</a> <a href="/tag/bootloader.html">Bootloader</a> </p>        
+</footer><!-- /.post-info --><h2>Introduction</h2>
+<p>Why is Linux so pervasive? Why does something as seemingly simple as a smart TV need to run something as complex as Linux just to stream video?</p>
+<p>The answer is functionality. Linux is open-source, and it offers a robust scheduler, a powerful networking stack, support for USB, Wi-Fi, Bluetooth, various storage types, multimedia devices, and much more. It checks all the boxes needed in a modern embedded device.</p>
+<p>In this article, we'll explore the <strong>startup process</strong> of an embedded Linux system, using the well-known <strong>Beaglebone Black</strong> as an example. Devices like the Raspberry Pi follow a similar boot process, so these principles apply across many embedded platforms.</p>
+<p>For a deeper dive into every layer of Embedded Linux—from bootloader to kernel, device trees, and driver development—I recommend the book <strong>"Mastering Embedded Linux Programming"</strong>.</p>
+<hr>
+<h2>1. Boot Process Overview</h2>
+<p>The boot process of an embedded Linux system typically involves the following stages:</p>
+<h3>🔹 Phase 1: ROM Code (Primary Bootloader)</h3>
+<p>This is the very first code that runs after power-on or reset. It is stored <strong>on-chip</strong> in the SoC and is called <strong>ROM code</strong>. Its job is to load a small portion of code from pre-defined sources into <strong>SRAM</strong>.</p>
+<p>For example, Texas Instruments (TI) Sitara and OMAP processors may attempt to load this code (commonly named <code>MLO</code>) from:</p>
+<ul>
+<li>NAND flash</li>
+<li>SPI-connected flash</li>
+<li>MMC devices like eMMC or SD cards</li>
+</ul>
+<p>Once loaded into SRAM, the ROM code jumps to the <strong>SPL (Secondary Program Loader)</strong>.</p>
+<hr>
+<h3>🔹 Phase 2: MLO (Secondary Bootloader)</h3>
+<p>This second-stage bootloader configures basic hardware like the memory controller. It then reads <code>u-boot.img</code> from a partition and prepares the system to run a full bootloader (U-Boot).</p>
+<h4>📦 Example: Flashing from SD Card to eMMC on TI AM3358</h4>
+<div class="highlight"><pre><span></span><code><span class="c1">#debug_over_display=tty0</span>
+<span class="nv">source</span><span class="o">=</span>/dev/mmcblk0
+<span class="nv">destination</span><span class="o">=</span>/dev/mmcblk1
+<span class="nv">rfs_partition</span><span class="o">=</span>single
+<span class="nv">rfs_rootfs_type</span><span class="o">=</span>ext4
+<span class="nv">rfs_rootfs_startmb</span><span class="o">=</span><span class="m">4</span>
+<span class="nv">bootloader</span><span class="o">=</span>/opt/u-boot/bb-u-boot-am57xx-evm/install-mmcblk1.sh
+<span class="nv">flash_back</span><span class="o">=</span>bbai-emmc-to-microsd
+</code></pre></div>
+
+<h3>🔹 Phase 3: Full bootloader</h3>
+<p>At this stage, a full bootloader such as U-Boot is running. Its role is to:
+- Load the Linux kernel into DRAM
+- Pass essential information to the kernel</p>
+<p>This includes:
+- Hardware details, including: based address, working mode, interrupt line, etc.
+- Kernel command-line arguments
+Optional:
+- Device Tree Blob (DTB): Describes hardware layout (memory, I/O, interrupts, etc.)
+- Initial RAM filesystem (initramfs)</p>
+<p>The kernel uses this information to initialize drivers and mount the root filesystem.</p>                    </article>
+                </aside><!-- /#featured -->
+                <section id="extras" class="body">
+                                <div class="social">
+                                        <h2>social</h2>
+                                        <ul>
+                                                        <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                                        </ul>
+                                </div><!-- /.social -->
+                </section><!-- /#extras -->
+
+                <footer id="contentinfo" class="body">
+                        <address id="about" class="vcard body">
+                                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                        </address><!-- /#about -->
+
+                        <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+                </footer><!-- /#contentinfo -->
+
+        </body>
+</html>

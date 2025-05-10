@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                        <meta charset="utf-8" />
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                        <meta name="generator" content="Pelican" />
+                        <title>T_Blog - startup</title>
+                        <link rel="stylesheet" href="/theme/css/main.css" />
+                                <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="T_Blog Atom Feed" />
+        </head>
+
+        <body id="index" class="home">
+                <header id="banner" class="body">
+                        <h1><a href="/">T_Blog</a></h1>
+                        <nav><ul>
+                                                <li><a href="/category/digital-design.html">Digital Design</a></li>
+                                                <li><a href="/category/embedded-systems.html">Embedded Systems</a></li>
+                        </ul></nav>
+                </header><!-- /#banner -->
+
+                <aside id="featured" class="body">
+                    <article>
+                        <h1 class="entry-title"><a href="/embedded-systems/stm32-startup.html">STM32 Startup Sequence</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2025-05-09T00:00:00+07:00">
+                Published: Fri 09 May 2025
+        </abbr>
+
+                <address class="vcard author">
+                        By                                 <a class="url fn" href="/author/tung-nguyen.html">Tung Nguyen</a>
+                </address>
+        <p>In <a href="/category/embedded-systems.html">Embedded Systems</a>.</p>
+<p>tags: <a href="/tag/stm32.html">stm32</a> <a href="/tag/microcontroller.html">microcontroller</a> <a href="/tag/startup.html">startup</a> <a href="/tag/reset.html">reset</a> <a href="/tag/ivt.html">IVT</a> </p>        
+</footer><!-- /.post-info --><h2>Introduction</h2>
+<p>In this article, we'll explore how an STM32 microcontroller starts up after power-on or reset — from the first instruction to the start of your <code>main()</code> function.</p>
+<hr>
+<h2>Microcontroller Startup Basics</h2>
+<p>A microcontroller begins execution from a known <strong>reset vector address</strong>. For ARM Cortex-M cores (used in STM32 devices), this involves the <strong>Interrupt Vector Table (IVT)</strong>:</p>
+<ul>
+<li><strong>IVT Location</strong>: At the start of the memory map (e.g., <code>0x08000000</code> for Flash)</li>
+<li><strong>First Entry</strong>: Initial <strong>Stack Pointer</strong> (SP)</li>
+<li><strong>Second Entry</strong>: Address of the <strong>Reset Handler</strong> (i.e., where execution starts)</li>
+</ul>
+<p>These values are set by the <strong>linker script</strong> and provided in <code>stm32xxx_flash.ld</code>.</p>
+<hr>
+<h2>STM32 Startup Sequence</h2>
+<p>Here’s the typical STM32 boot and startup process:</p>
+<ol>
+<li><strong>Reset Handler</strong> (2nd entry in the IVT) is called</li>
+<li><strong>Boot Configuration</strong>: Determines whether to boot from:</li>
+<li>Flash (default for user code)</li>
+<li>System memory (bootloader)</li>
+<li>SRAM (for debugging/testing)</li>
+<li><strong>SystemInit()</strong> is usually called (by CMSIS) early to:</li>
+<li>Set up clock sources (HSE/PLL)</li>
+<li>Configure low-level registers (via <code>system_stm32fxxx.c</code>)</li>
+<li><strong>C Runtime Initialization</strong>:</li>
+<li><strong>Data Section Init</strong>: Copies initialized variables from Flash to RAM</li>
+<li><strong>BSS Section Init</strong>: Zeros out uninitialized global/static variables</li>
+<li><strong>Static Constructors</strong>: Run C++ constructors if any</li>
+<li><code>main()</code> function is finally called</li>
+</ol>
+<hr>
+<h2>Visual Summary</h2>
+<div class="highlight"><pre><span></span><code>[Power On / Reset]
+       ↓
+[IVT @ 0x08000000]
+  - SP (entry 0)
+  - Reset_Handler (entry 1)
+       ↓
+[SystemInit()]
+       ↓
+[Initialize .data and .bss]
+       ↓
+[Run static constructors]
+       ↓
+[main()]
+</code></pre></div>                    </article>
+                </aside><!-- /#featured -->
+                <section id="extras" class="body">
+                                <div class="social">
+                                        <h2>social</h2>
+                                        <ul>
+                                                        <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                                        </ul>
+                                </div><!-- /.social -->
+                </section><!-- /#extras -->
+
+                <footer id="contentinfo" class="body">
+                        <address id="about" class="vcard body">
+                                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                        </address><!-- /#about -->
+
+                        <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+                </footer><!-- /#contentinfo -->
+
+        </body>
+</html>

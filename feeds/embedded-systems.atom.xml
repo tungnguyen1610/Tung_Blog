@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>T_Blog - Embedded Systems</title><link href="/" rel="alternate"></link><link href="/feeds/embedded-systems.atom.xml" rel="self"></link><id>/</id><updated>2025-05-09T00:00:00+07:00</updated><entry><title>Intro to Embedded Linux</title><link href="/embedded-systems/intro-linux.html" rel="alternate"></link><published>2025-05-09T00:00:00+07:00</published><updated>2025-05-09T00:00:00+07:00</updated><author><name>Tung Nguyen</name></author><id>tag:None,2025-05-09:/embedded-systems/intro-linux.html</id><summary type="html">&lt;p&gt;Learn the basics of Embedded Linux boot-up using Beaglebone Black.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Why is Linux so pervasive? Why does something as seemingly simple as a smart TV need to run something as complex as Linux just to stream video?&lt;/p&gt;
+&lt;p&gt;The answer is functionality. Linux is open-source, and it offers a robust scheduler, a powerful networking stack, support for USB, Wi-Fi, Bluetooth, various storage types, multimedia devices, and much more. It checks all the boxes needed in a modern embedded device.&lt;/p&gt;
+&lt;p&gt;In this article, we'll explore the &lt;strong&gt;startup process&lt;/strong&gt; of an embedded Linux system, using the well-known &lt;strong&gt;Beaglebone Black&lt;/strong&gt; as an example. Devices like the Raspberry Pi follow a similar boot process, so these principles apply across many embedded platforms.&lt;/p&gt;
+&lt;p&gt;For a deeper dive into every layer of Embedded Linux—from bootloader to kernel, device trees, and driver development—I recommend the book &lt;strong&gt;"Mastering Embedded Linux Programming"&lt;/strong&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;1. Boot Process Overview&lt;/h2&gt;
+&lt;p&gt;The boot process of an embedded Linux system typically involves the following stages:&lt;/p&gt;
+&lt;h3&gt;🔹 Phase 1: ROM Code (Primary Bootloader)&lt;/h3&gt;
+&lt;p&gt;This is the very first code that runs after power-on or reset. It is stored &lt;strong&gt;on-chip&lt;/strong&gt; in the SoC and is called &lt;strong&gt;ROM code&lt;/strong&gt;. Its job is to load a small portion of code from pre-defined sources into &lt;strong&gt;SRAM&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;For example, Texas Instruments (TI) Sitara and OMAP processors may attempt to load this code (commonly named &lt;code&gt;MLO&lt;/code&gt;) from:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;NAND flash&lt;/li&gt;
+&lt;li&gt;SPI-connected flash&lt;/li&gt;
+&lt;li&gt;MMC devices like eMMC or SD cards&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Once loaded into SRAM, the ROM code jumps to the &lt;strong&gt;SPL (Secondary Program Loader)&lt;/strong&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;🔹 Phase 2: MLO (Secondary Bootloader)&lt;/h3&gt;
+&lt;p&gt;This second-stage bootloader configures basic hardware like the memory controller. It then reads &lt;code&gt;u-boot.img&lt;/code&gt; from a partition and prepares the system to run a full bootloader (U-Boot).&lt;/p&gt;
+&lt;h4&gt;📦 Example: Flashing from SD Card to eMMC on TI AM3358&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;#debug_over_display=tty0&lt;/span&gt;
+&lt;span class="nv"&gt;source&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/dev/mmcblk0
+&lt;span class="nv"&gt;destination&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/dev/mmcblk1
+&lt;span class="nv"&gt;rfs_partition&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;single
+&lt;span class="nv"&gt;rfs_rootfs_type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;ext4
+&lt;span class="nv"&gt;rfs_rootfs_startmb&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;
+&lt;span class="nv"&gt;bootloader&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/opt/u-boot/bb-u-boot-am57xx-evm/install-mmcblk1.sh
+&lt;span class="nv"&gt;flash_back&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;bbai-emmc-to-microsd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;🔹 Phase 3: Full bootloader&lt;/h3&gt;
+&lt;p&gt;At this stage, a full bootloader such as U-Boot is running. Its role is to:
+- Load the Linux kernel into DRAM
+- Pass essential information to the kernel&lt;/p&gt;
+&lt;p&gt;This includes:
+- Hardware details, including: based address, working mode, interrupt line, etc.
+- Kernel command-line arguments
+Optional:
+- Device Tree Blob (DTB): Describes hardware layout (memory, I/O, interrupts, etc.)
+- Initial RAM filesystem (initramfs)&lt;/p&gt;
+&lt;p&gt;The kernel uses this information to initialize drivers and mount the root filesystem.&lt;/p&gt;</content><category term="Embedded Systems"></category><category term="Beaglebone Black"></category><category term="SoC"></category><category term="Linux"></category><category term="Bootloader"></category></entry><entry><title>STM32 Startup Sequence</title><link href="/embedded-systems/stm32-startup.html" rel="alternate"></link><published>2025-05-09T00:00:00+07:00</published><updated>2025-05-09T00:00:00+07:00</updated><author><name>Tung Nguyen</name></author><id>tag:None,2025-05-09:/embedded-systems/stm32-startup.html</id><summary type="html">&lt;p&gt;Understand the power-on and startup sequence of STM32 microcontrollers.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;In this article, we'll explore how an STM32 microcontroller starts up after power-on or reset — from the first instruction to the start of your &lt;code&gt;main()&lt;/code&gt; function.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Microcontroller Startup Basics&lt;/h2&gt;
+&lt;p&gt;A microcontroller begins execution from a known &lt;strong&gt;reset vector address&lt;/strong&gt;. For ARM Cortex-M cores (used in STM32 devices), this involves the &lt;strong&gt;Interrupt Vector Table (IVT)&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;IVT Location&lt;/strong&gt;: At the start of the memory map (e.g., &lt;code&gt;0x08000000&lt;/code&gt; for Flash)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;First Entry&lt;/strong&gt;: Initial &lt;strong&gt;Stack Pointer&lt;/strong&gt; (SP)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Second Entry&lt;/strong&gt;: Address of the &lt;strong&gt;Reset Handler&lt;/strong&gt; (i.e., where execution starts)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These values are set by the &lt;strong&gt;linker script&lt;/strong&gt; and provided in &lt;code&gt;stm32xxx_flash.ld&lt;/code&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;STM32 Startup Sequence&lt;/h2&gt;
+&lt;p&gt;Here’s the typical STM32 boot and startup process:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Reset Handler&lt;/strong&gt; (2nd entry in the IVT) is called&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Boot Configuration&lt;/strong&gt;: Determines whether to boot from:&lt;/li&gt;
+&lt;li&gt;Flash (default for user code)&lt;/li&gt;
+&lt;li&gt;System memory (bootloader)&lt;/li&gt;
+&lt;li&gt;SRAM (for debugging/testing)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SystemInit()&lt;/strong&gt; is usually called (by CMSIS) early to:&lt;/li&gt;
+&lt;li&gt;Set up clock sources (HSE/PLL)&lt;/li&gt;
+&lt;li&gt;Configure low-level registers (via &lt;code&gt;system_stm32fxxx.c&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;C Runtime Initialization&lt;/strong&gt;:&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Section Init&lt;/strong&gt;: Copies initialized variables from Flash to RAM&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;BSS Section Init&lt;/strong&gt;: Zeros out uninitialized global/static variables&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Static Constructors&lt;/strong&gt;: Run C++ constructors if any&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;main()&lt;/code&gt; function is finally called&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2&gt;Visual Summary&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;[Power On / Reset]
+       ↓
+[IVT @ 0x08000000]
+  - SP (entry 0)
+  - Reset_Handler (entry 1)
+       ↓
+[SystemInit()]
+       ↓
+[Initialize .data and .bss]
+       ↓
+[Run static constructors]
+       ↓
+[main()]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Embedded Systems"></category><category term="stm32"></category><category term="microcontroller"></category><category term="startup"></category><category term="reset"></category><category term="IVT"></category></entry></feed>

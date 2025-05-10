@@ -15,3 +15,9 @@ THEME_TEMPLATES_OVERRIDES = ['templates']
 DEFAULT_PAGINATION = 10
 DISPLAY_CATEGORIES_ON_MENU = True
 DISPLAY_PAGES_ON_MENU = True
+
+SOCIAL = (
+    ('GitHub', 'https://github.com/yourusername'),
+    ('LinkedIn', 'https://www.linkedin.com/in/yourusername'),
+    ('Facebook', 'https://www.facebook.com/yourusername'),
+)

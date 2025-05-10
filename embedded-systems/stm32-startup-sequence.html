@@ -4,9 +4,10 @@
                         <meta charset="utf-8" />
                         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                         <meta name="generator" content="Pelican" />
-                        <title>T_Blog - startup</title>
+                        <title>STM32 Startup Sequence</title>
                         <link rel="stylesheet" href="/theme/css/main.css" />
                                 <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="T_Blog Atom Feed" />
+    <meta name="description" content="Understand the power-on and startup sequence of STM32 microcontrollers." />
         </head>
 
         <body id="index" class="home">
@@ -14,13 +15,18 @@
                         <h1><a href="/">T_Blog</a></h1>
                         <nav><ul>
                                                 <li><a href="/category/digital-design.html">Digital Design</a></li>
-                                                <li><a href="/category/embedded-systems.html">Embedded Systems</a></li>
+                                                <li class="active"><a href="/category/embedded-systems.html">Embedded Systems</a></li>
                         </ul></nav>
                 </header><!-- /#banner -->
+  <section id="content" class="body">
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/embedded-systems/stm32-startup-sequence.html" rel="bookmark"
+             title="Permalink to STM32 Startup Sequence">STM32 Startup Sequence</a></h1>
+      </header>
 
-                <aside id="featured" class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="/embedded-systems/stm32-startup-sequence.html">STM32 Startup Sequence</a></h1>
+      <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2025-05-09T00:00:00+07:00">
                 Published: Fri 09 May 2025
@@ -31,7 +37,7 @@
                 </address>
         <p>In <a href="/category/embedded-systems.html">Embedded Systems</a>.</p>
 <p>tags: <a href="/tag/stm32.html">stm32</a> <a href="/tag/microcontroller.html">microcontroller</a> <a href="/tag/startup.html">startup</a> <a href="/tag/reset.html">reset</a> <a href="/tag/ivt.html">IVT</a> </p>        
-</footer><!-- /.post-info --><!-- PELICAN_END_SUMMARY -->
+</footer><!-- /.post-info -->        <!-- PELICAN_END_SUMMARY -->
 
 <h2>Introduction</h2>
 <p>In this article, we'll explore how an STM32 microcontroller starts up after power-on or reset — from the first instruction to the start of your <code>main()</code> function.</p>
@@ -77,8 +83,11 @@
 [Run static constructors]
        ↓
 [main()]
-</code></pre></div>                    </article>
-                </aside><!-- /#featured -->
+</code></pre></div>
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
                 <section id="extras" class="body">
                                 <div class="social">
                                         <h2>social</h2>

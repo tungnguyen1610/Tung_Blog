@@ -4,6 +4,7 @@ Category: Embedded Systems
 Tags: Beaglebone Black, SoC, Linux, Bootloader  
 Slug: intro-linux  
 Summary: Learn the basics of Embedded Linux boot-up using Beaglebone Black.
+<!-- PELICAN_END_SUMMARY -->
 
 ## Introduction
 

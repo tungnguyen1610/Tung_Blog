@@ -4,6 +4,7 @@ Category: Digital Design
 Slug: systemverilog-fundamentals
 Author: Tung Nguyen
 Summary: SystemVerilog concepts including assignments, procedures, and language features.
+<!-- PELICAN_END_SUMMARY -->
 
 ## Assignments in SystemVerilog
 

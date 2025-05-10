@@ -4,6 +4,7 @@ Category: Embedded Systems
 Tags: stm32, microcontroller, startup, reset, IVT  
 Slug: stm32-startup  
 Summary: Understand the power-on and startup sequence of STM32 microcontrollers.
+<!-- PELICAN_END_SUMMARY -->
 
 ## Introduction
 

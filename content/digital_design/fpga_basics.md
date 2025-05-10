@@ -4,5 +4,6 @@ Category: Digital Design
 Tags: fpga, verilog, hardware
 Slug: fpga-basics
 Summary: Introduction to FPGA development and applications.
+<!-- PELICAN_END_SUMMARY -->
 
 Field-Programmable Gate Arrays (FPGAs) are integrated circuits that can be configured by the user after manufacturing...

@@ -3,7 +3,7 @@ Date: 2025-05-10
 Category: Digital Design
 Slug: general-digital-design
 Author: Tung Nguyen
-Summary: Core concepts in digital logic design including timing, hazards, metastability, FSMs, and CDC.
+Summary: Combinational logic and sequential logic
  <!-- PELICAN_END_SUMMARY -->
 
 ## Timing Basics

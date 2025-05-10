@@ -1,9 +1,8 @@
 Title: Intro to Embedded Linux  
 Date: 2025-05-09  
+Summary: Learn the basics of Embedded Linux boot-up using Beaglebone Black.
 Category: Embedded Systems  
 Tags: Beaglebone Black, SoC, Linux, Bootloader  
-Slug: intro-linux  
-Summary: Learn the basics of Embedded Linux boot-up using Beaglebone Black.
 <!-- PELICAN_END_SUMMARY -->
 
 ## Introduction

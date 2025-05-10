@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Articles by {{ author }}{% endblock %}
+
+{% block content %}
+<article class="body">
+  <h1>About {{ author }}</h1>
+  <p>Hello! I'm {{ author }}. I created T_Blog to share knowledge in embedded systems, digital design, and automotive tech.
+  This space is for students, engineers, and anyone curious about electronics. Enjoy your learning journey!</p>
+</article>
+
+<article class="body">
+  <h2>Articles by {{ author }}</h2>
+  <ul>
+    {% for article in articles %}
+      <li><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></li>
+    {% endfor %}
+  </ul>
+</article>
+{% endblock %}

@@ -1,0 +1,27 @@
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+
+# Ignore Pelican output
+output/
+*.html
+
+# Ignore virtual environments
+venv/
+
+# Ignore backup files
+*.bak
+*.swp
+*.swo
+
+# Ignore Pelican cache
+cache/
+*.log
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore theme folders if you don't want to track them
+themes/notmyidea/
+venv/

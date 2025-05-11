@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head  >
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+                        <meta charset="utf-8" />
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                        <meta name="generator" content="Pelican" />
+                        <title>CAN network</title>
+                        <link rel="stylesheet" href="/theme/css/main.css" />
+    <meta name="description" content="CAN communication in electric control unit (ECU)." />
+        </head>
+
+        <body id="index" class="home">
+                <header id="banner" class="body">
+                        <h1><a href="/">T_Blog</a></h1>
+                        <nav><ul>
+                                                <li class="active"><a href="/category/automotive.html">Automotive</a></li>
+                                                <li><a href="/category/digital-design.html">Digital Design</a></li>
+                                                <li><a href="/category/embedded-systems.html">Embedded Systems</a></li>
+                        </ul></nav>
+                </header><!-- /#banner -->
+  <section id="content" class="body">
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/automotive/can-network.html" rel="bookmark"
+             title="Permalink to CAN network">CAN network</a></h1>
+      </header>
+
+      <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2025-05-11T00:00:00+07:00">
+                Published: Sun 11 May 2025
+        </abbr>
+
+                <address class="vcard author">
+                        By                                 <a class="url fn" href="/author/tung-nguyen.html">Tung Nguyen</a>
+                </address>
+        <p>In <a href="/category/automotive.html">Automotive</a>.</p>
+<p>tags: <a href="/tag/communication.html">Communication</a> <a href="/tag/can.html">CAN</a> </p>        
+</footer><!-- /.post-info -->        <h2>Introduction</h2>
+<p>The Controller Area Network (CAN) is a robust vehicle bus standard designed to allow microcontrollers and devices to communicate with each other within a vehicle without a host computer. It is widely used in automotive ECUs (Electronic Control Units) for real-time communication.</p>
+<h2>CAN Features</h2>
+<ul>
+<li><strong>Differential Signaling (CAN High and CAN Low):</strong><br>
+  Uses two wires (CAN_H and CAN_L) for noise-resistant communication. The signal is represented using:</li>
+<li><strong>Dominant bit:</strong> Logical 0 (CAN_H - CAN_L ~ 2 V)</li>
+<li>
+<p><strong>Recessive bit:</strong> Logical 1 (CAN_H - CAN_L ~ 0 V)</p>
+</li>
+<li>
+<p><strong>Broadcast Communication:</strong><br>
+  All nodes on the CAN bus can "hear" every transmission. Nodes determine if the message is relevant by filtering IDs.</p>
+</li>
+<li>
+<p><strong>Arbitration Field:</strong><br>
+  When multiple ECUs transmit simultaneously, CAN uses priority-based arbitration. Lower ID values have higher priority.</p>
+</li>
+<li>
+<p><strong>CAN Frame Structure:</strong></p>
+</li>
+<li><strong>Identifier (ID):</strong> Determines the priority of the message.</li>
+<li><strong>RTR (Remote Transmission Request):</strong> Indicates if the frame is a data frame or a remote request.</li>
+<li><strong>Length:</strong> Number of bytes in the data field (0–8 for classic CAN, up to 64 in CAN FD).</li>
+<li><strong>Payload:</strong> The actual data being transmitted.</li>
+<li><strong>CRC (Cyclic Redundancy Check):</strong> Ensures data integrity.</li>
+</ul>
+<h2>Components:</h2>
+<ul>
+<li><strong>Microcontroller (MCU):</strong></li>
+<li>Has dedicated CAN controller hardware.</li>
+<li>
+<p>Communicates using two digital lines:</p>
+<ul>
+<li><strong>CAN_TX</strong>: Transmit line from MCU to the CAN transceiver.</li>
+<li><strong>CAN_RX</strong>: Receive line from the CAN transceiver to the MCU.</li>
+</ul>
+</li>
+<li>
+<p><strong>CAN Transceiver:</strong></p>
+</li>
+<li>Converts digital signals (TX/RX) from the microcontroller into differential voltages on the CAN bus (CAN_H and CAN_L).</li>
+<li>Also converts bus voltages back to digital signals for the MCU.</li>
+<li>
+<p>Ensures compliance with ISO 11898 (physical layer spec).</p>
+</li>
+<li>
+<p><strong>CAN Bus:</strong></p>
+</li>
+<li>Two-wire twisted pair: <strong>CAN_H</strong> and <strong>CAN_L</strong></li>
+<li>Terminated at both ends with 120-ohm resistors to prevent signal reflections.</li>
+</ul>
+<h2>Conclusion</h2>
+<p>CAN communication is critical in modern automotive systems for enabling reliable, prioritized, and synchronized data exchange between ECUs.</p>
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+                <section id="extras" class="body">
+    <div class="contact-section">
+        <h1>Contact</h1>
+        <div class="contact-links">
+                <a href="https://github.com/tungnguyen1610" class="contact-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/tungbud/" class="contact-link" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="mailto:nguyenhoangtung1610@gmail.com" class="contact-link" target="_blank" rel="noopener"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+    </div>
+
+                </section><!-- /#extras -->
+
+                <footer id="contentinfo" class="body">
+                        <address id="about" class="vcard body">
+                                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                        </address><!-- /#about -->
+
+                        <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+                </footer><!-- /#contentinfo -->
+
+        </body>
+</html>

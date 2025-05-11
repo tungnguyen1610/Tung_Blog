@@ -1,5 +1,5 @@
 AUTHOR = 'Tung Nguyen'
-SITENAME = 'T_Blog'
+SITENAME = 'Tung Nguyen'
 #SITEURL = 'https://tungnguyen1610.github.io/Tung_Blog/'
 SITEURL=''
 PATH = 'content'

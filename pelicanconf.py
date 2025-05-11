@@ -1,6 +1,6 @@
 AUTHOR = 'Tung Nguyen'
 SITENAME = 'T_Blog'
-#SITEURL = 'https://tungnguyen1610.github.io/Tung_Blog/'
+SITEURL = 'https://tungnguyen1610.github.io/Tung_Blog/'
 #SITEURL=''
 PATH = 'content'
 TIMEZONE = 'Asia/Ho_Chi_Minh'

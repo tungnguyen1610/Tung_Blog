@@ -22,7 +22,7 @@ Summary: Combinational logic and sequential logic
 
 ## Finite State Machines (FSM)
 
-- **Encoding Styles**:
+## Encoding Styles:
   - **Binary**
   - **Gray**
   - **One-hot**: One bit is HIGH, others LOW.

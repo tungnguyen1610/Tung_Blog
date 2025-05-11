@@ -23,5 +23,4 @@ cache/
 Thumbs.db
 
 # Ignore theme folders if you don't want to track them
-themes/notmyidea/
 venv/

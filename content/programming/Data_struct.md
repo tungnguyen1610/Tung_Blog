@@ -4,7 +4,6 @@ Category: Programming
 Tags: struct, union, bitfield  
 Summary: A detailed comparison between struct, union, and bit-field in Embedded C.
 
-# Embedded C Structure: `struct`, `union`, and Bit-Fields
 
 In C programming, especially within embedded systems, `struct` and `union` are user-defined data types that allow grouping variables of different types under one name. However, they differ fundamentally in how they allocate and manage memory.
 

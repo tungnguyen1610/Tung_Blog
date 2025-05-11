@@ -11,9 +11,11 @@ The Controller Area Network (CAN) is a robust vehicle bus standard designed to a
 ## CAN Features
 
 - **Differential Signaling (CAN High and CAN Low):**  
-  Uses two wires (CAN_H and CAN_L) for noise-resistant communication. The signal is represented using:
-  - **Dominant bit:** Logical 0 (CAN_H - CAN_L ~ 2 V)
-  - **Recessive bit:** Logical 1 (CAN_H - CAN_L ~ 0 V)
+  Uses two wires (CAN_H and CAN_L) for noise-resistant communication The signal is represented using:
+  <ul>
+    <li>Dominant bit: Logical 0 (CAN_H - CAN_L ~ 2 V)</li>
+    <li>Recessive bit: Logical 1 (CAN_H - CAN_L ~ 0 V)</li>
+  </ul>
 
 - **Broadcast Communication:**  
   All nodes on the CAN bus can "hear" every transmission. Nodes determine if the message is relevant by filtering IDs.
@@ -22,11 +24,14 @@ The Controller Area Network (CAN) is a robust vehicle bus standard designed to a
   When multiple ECUs transmit simultaneously, CAN uses priority-based arbitration. Lower ID values have higher priority.
 
 - **CAN Frame Structure:**
-  - **Identifier (ID):** Determines the priority of the message.
-  - **RTR (Remote Transmission Request):** Indicates if the frame is a data frame or a remote request.
-  - **Length:** Number of bytes in the data field (0–8 for classic CAN, up to 64 in CAN FD).
-  - **Payload:** The actual data being transmitted.
-  - **CRC (Cyclic Redundancy Check):** Ensures data integrity.
+  <ul>
+    <li><strong>Identifier (ID):</strong> Determines the priority of the message.</li>
+    <li><strong>RTR (Remote Transmission Request):</strong> Indicates if the frame is a data frame or a remote request.</li>
+    <li><strong>Length:</strong> Number of bytes in the data field (0–8 for classic CAN, up to 64 in CAN FD).</li>
+    <li><strong>Payload:</strong> The actual data being transmitted.</li>
+    <li><strong>CRC (Cyclic Redundancy Check):</strong> Ensures data integrity.</li>
+  </ul>
+
 
 ## Components:
 - **Microcontroller (MCU):**

@@ -27,21 +27,27 @@ These values are set by the **linker script** and provided in `stm32xxx_flash.ld
 
 Here’s the typical STM32 boot and startup process:
 
-1. **Reset Handler** (2nd entry in the IVT) is called
-2. **Boot Configuration**: Determines whether to boot from:
-   - Flash (default for user code)
-   - System memory (bootloader)
-   - SRAM (for debugging/testing)
-3. **SystemInit()** is usually called (by CMSIS) early to:
-   - Set up clock sources (HSE/PLL)
-   - Configure low-level registers (via `system_stm32fxxx.c`)
-4. **C Runtime Initialization**:
-   - **Data Section Init**: Copies initialized variables from Flash to RAM
-   - **BSS Section Init**: Zeros out uninitialized global/static variables
-5. **Static Constructors**: Run C++ constructors if any
-6. `main()` function is finally called
+## STM32 Startup Sequence
 
----
+Here’s the typical STM32 boot and startup process:
+
+1. **Reset Handler**  
+   Called via the second entry in the Interrupt Vector Table (IVT).
+
+2. **Boot Configuration**  
+   Determines whether to boot from: Flash (default for user code),System memory (bootloader), SRAM (for debugging/testing)
+
+3. **SystemInit()** (usually called by CMSIS)  
+   Initializes the system by: Setting up clock sources (HSE/PLL) ,Configuring low-level registers (via `system_stm32fxxx.c`)
+
+4. **C Runtime Initialization**  
+   - **Data Section Init**: Copies initialized variables from Flash to RAM  
+   - **BSS Section Init**: Zeros out uninitialized global/static variables
+
+5. **Static Constructors**  
+   Runs C++ constructors, if any.
+
+6. `main()` function is finally called
 
 ## Visual Summary
 

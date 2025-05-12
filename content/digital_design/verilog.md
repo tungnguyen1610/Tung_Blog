@@ -1,6 +1,6 @@
 Title: SystemVerilog Coding Essentials
 Summary: SystemVerilog concepts including assignments, procedures, and language features.
-Date: 2025-05-10
+Date: 2025-05-09
 Category: Digital Design
 Author: Tung Nguyen
 <!-- PELICAN_END_SUMMARY -->

@@ -1,6 +1,6 @@
 Title: STM32 Startup Sequence  
 Summary: Understand the power-on and startup sequence of STM32 microcontrollers.
-Date: 2025-05-09  
+Date: 2025-05-11  
 Category: Embedded Systems  
 Tags: stm32, microcontroller, startup, reset, IVT  
 <!-- PELICAN_END_SUMMARY -->

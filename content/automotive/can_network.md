@@ -33,7 +33,7 @@ The Controller Area Network (CAN) is a robust vehicle bus standard designed to a
   </ul>
 
 
-## Components:
+## General CAN set-up:
 - **Microcontroller (MCU):**
   - Has dedicated CAN controller hardware.
   - Communicates using two digital lines:
@@ -46,9 +46,24 @@ The Controller Area Network (CAN) is a robust vehicle bus standard designed to a
   - Ensures compliance with ISO 11898 (physical layer spec).
 
 - **CAN Bus:**
-  - Two-wire twisted pair: **CAN_H** and **CAN_L**
+  - Two-wire twisted pair: **CAN_H** and **CAN_L** to reduce EMC. 
   - Terminated at both ends with 120-ohm resistors to prevent signal reflections.
 
-## Conclusion
-CAN communication is critical in modern automotive systems for enabling reliable, prioritized, and synchronized data exchange between ECUs.
+## CAN Bus Error
+Error handling is vital to the robustness of CAN.
+
+1. Bit Error (Transmitter)
+  Node transmit a dominant/recessive bit but read backs opposite level
+
+2. Bit stuffing Error (Receiver)
+  Detecting a sequence of 6 bits of the same logical level 
+
+3. Form error (Receiver):
+  Detects bit of invalid logical level in the SOF/EOF fields or ACK/CRC delimiters
+
+4. ACK error (Transmitter):
+  Node transmits a CAN message, but the ACK slot is not made dominant by receivers
+
+5. CRC Error (Receiver):
+  Node calculates a CAN message CRC that differs from the transmitted CRC field value
 

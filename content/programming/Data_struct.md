@@ -1,5 +1,5 @@
 Title: Embedded C Structure  
-Date: 2025-05-11  
+Date: 2025-05-23  
 Category: Programming  
 Tags: struct, union, bitfield  
 Summary: A detailed comparison between struct, union, and bit-field in Embedded C.
@@ -11,10 +11,54 @@ In C programming, especially within embedded systems, `struct` and `union` are u
 ## 🔹 Struct vs. Union
 
 ### ✅ `struct`
-
 - Each member occupies **its own memory space**.
 - Total size = **sum of all members' sizes** (plus possible padding for alignment).
 - Members are stored **contiguously** in memory.
+#### Struct padding and alignment
+When writing C code for low-level or memory-constrained systems, it's important to understand how data structures are laid out in memory. The compiler often inserts **padding bytes** between struct members to satisfy **alignment requirements**. This can lead to increased memory usage if not handled carefully.
+
+---
+
+### 🔍 Code Example: Unexpected Struct Size
+
+```c
+#include <stdio.h>
+#include <stdint.h>
+
+typedef struct DataInfor
+{
+    long long timestamp; // 8 bytes
+    float output;        // 4 bytes
+    uint16_t date;       // 2 bytes
+    int input;           // 4 bytes
+    double test;         // 8 bytes
+    uint8_t day;         // 1 byte
+} Infor;
+
+int main()
+{
+    printf("The total size of struct: %ld\n", sizeof(Infor));
+    return 0;
+}
+```
+#### ❓ Why Struct Padding Happens
+
+- **Alignment**: Most systems require variables to be aligned in memory according to their type size.  
+  _Example: `int` should be aligned to a 4-byte boundary._
+
+- **Padding**: The compiler inserts **unused bytes** between fields to maintain proper alignment.
+
+- **Struct Alignment**: The total size of the struct is **rounded up** to the nearest multiple of the **largest member’s alignment** requirement (often 8 bytes).
+
+---
+
+#### ✅ Best Practices to Save Memory (If Necessary)
+
+- 🔹 **Reorder struct members from largest to smallest type**  
+  _✔ Recommended – avoids unnecessary padding._
+
+- 🔹 **Use `__attribute__((packed))` (GCC/Clang)**  
+  _⚠ Not recommended unless absolutely necessary – can cause **misaligned memory access**, which may lead to **performance penalties** or **runtime errors** on some architectures._
 
 ### ✅ `union`
 

@@ -24,7 +24,7 @@ The boot process of an embedded Linux system typically involves the following st
 
 ### 🔹 Phase 1: ROM Code (Primary Bootloader)
 
-This is the very first code that runs after power-on or reset. It is stored **on-chip** in the SoC and is called **ROM code**. Its job is to load a small portion of code from pre-defined sources into **SRAM**.
+This is the very first code that runs after power-on or reset. Hardware reset logic activates and initializes clock/power domains before the SoC begins executing the on-chip ROM code. The code is stored **on-chip** in the SoC and is called **ROM code**. Its job is to load a small portion of code from pre-defined sources into **SRAM**.
 
 For example, Texas Instruments (TI) Sitara and OMAP processors may attempt to load this code (commonly named `MLO`) from:
 
@@ -37,8 +37,7 @@ Once loaded into SRAM, the ROM code jumps to the **SPL (Secondary Program Loader
 ---
 
 ### 🔹 Phase 2: MLO (Secondary Bootloader)
-
-This second-stage bootloader configures basic hardware like the memory controller. It then reads `u-boot.img` from a partition and prepares the system to run a full bootloader (U-Boot).
+The MLO file is the SPL binary renamed to match the filename expected by the SoC ROM loader when booting from MMC/eMMC.This second-stage bootloader configures basic hardware like the memory controller. It then reads `u-boot.img` from a partition and prepares the system to run a full bootloader (U-Boot).
 
 #### 📦 Example: Flashing from SD Card to eMMC on TI AM3358
 
@@ -65,3 +64,8 @@ Optional:
 - Initial RAM filesystem (initramfs)
 
 The kernel uses this information to initialize drivers and mount the root filesystem.
+
+### 🔹 Phase 4: User-space program
+- Systemd service runs, configure system users, etc.
+- Once system services are up and running (via Systemd), the system reaches a usable state, offering login via serial, SSH, or GUI depending on configuration.
+![Sequence](../images/embedded/boot.png)

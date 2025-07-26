@@ -1,57 +1,85 @@
-Title: General Concepts in Digital Design
-Date: 2025-07-24
-Category: Digital Design
-Slug: single-cycle-processor
-Author: Tung Nguyen
-Summary: MIPS micro-processor design
- <!-- PELICAN_END_SUMMARY -->
+Title: Single Cycle Processor 
+Date: 2025-07-24  
+Category: Digital Design  
+Slug: single-cycle-processor  
+Author: Tung Nguyen  
+Summary: MIPS microprocessor design  
+<!-- PELICAN_END_SUMMARY -->
+
 ## Introduction
-This blog covers microarchitecture which is the specific arrangement of registers, ALU, FSMs, memories and other logic building blocks needed to implement an architecture.
 
-Reference: Digital Design and Computer Architecture (David Harris)
+This blog post explores *microarchitecture*—the specific arrangement of registers, ALUs, FSMs, memories, and other logic blocks required to implement a processor architecture.
 
-1. Architectural state and Instruction set
-Architectural state: 32 registers and PC
-Instruction set: R type (add, sub, and, or), memory instruction (lw,sw) and branches (beq)
-For eg:
+**Reference:** *Digital Design and Computer Architecture* by David Harris
+
+---
+
+## 1. Architectural State and Instruction Set
+
+- **Architectural state:** 32 general-purpose registers and a program counter (PC)  
+- **Instruction set:**  
+  - R-type: `add`, `sub`, `and`, `or`  
+  - Memory instructions: `lw`, `sw`  
+  - Branch instruction: `beq`
+
+Example:
+
 ![State element](../images/digital_design/processor_2.png)
 
-2. Design path (single-cycle processor)
-2.1 32 bit Datapath
-State element: Program counter, memories (instruction and ), registers.
+---
 
-![State element](../images/digital_design/processor_1.png)
+## 2. Design Path: Single-Cycle Processor
 
-Program counter: 32 bit register. Its output PC, current address instruction. Its input, PC', points to next address instruction
+### 2.1 32-bit Datapath
 
-Instruction memory: single read port. It takes PC (address of instruction) -> output: 32 bit instruction
+**State elements:** Program counter, instruction memory, data memory, and register file.
 
-Register file: 2 read ports, and one write port. It takes 5 bit address input ports specifying one of 32 registers as Rs (source opperands). The write port
-takes a 5-bit address input, A3; a 32-bit write data input (for immediate addressing).
+![Datapath](../images/digital_design/processor_1.png)
 
-Single cycle datapth of "lw" instruction
-a instruction fetch
-b Read opperand (decode)
+- **Program Counter (PC):** A 32-bit register whose output provides the current instruction address (PC), and whose input (`PC'`) points to the next instruction address.  
+- **Instruction Memory:** Has a single read port. Takes the PC as input (instruction address) and outputs a 32-bit instruction.  
+- **Register File:** Has two 5-bit read address ports (`Rs`, `Rt`) and one 5-bit write address port (`Rd`). Includes a 32-bit write data input to support immediate addressing.
 
-![State element](../images/digital_design/processor_3.png)
-c Sign-extend the immediate
+#### Example: Single-Cycle Datapath for `lw` Instruction
 
-![State element](../images/digital_design/processor_4.png)
-d Memory address computation
-![State element](../images/digital_design/processor_5.png)
-e Write back
-![State element](../images/digital_design/processor_6.png)
-f. Determine next address instruction
-![State element](../images/digital_design/processor_7.png)
+a. Instruction Fetch  
+b. Operand Read (Decode)  
+![Decode](../images/digital_design/processor_3.png)
 
-Generalized datapath for R-type instruction
-![State element](../images/digital_design/processor_8.png)
+c. Sign-extend the Immediate  
+![Sign-extend](../images/digital_design/processor_4.png)
 
-2.2 Control unit
-Control signal: based on opcode and funct fields of insutrction ( bit [31:26], and bit [5:0])
-![State element](../images/digital_design/processor_9.png)
+d. Memory Address Computation  
+![Address computation](../images/digital_design/processor_5.png)
 
-Complete single-cycle of MIPS processor.
-![State element](../images/digital_design/processor_10.png)
+e. Write Back  
+![Write back](../images/digital_design/processor_6.png)
 
-3. Verilog design
+f. Determine Next Instruction Address  
+![Next PC](../images/digital_design/processor_7.png)
+
+---
+
+### Generalized Datapath for R-Type Instruction
+
+![R-type Datapath](../images/digital_design/processor_8.png)
+
+---
+
+### 2.2 Control Unit
+
+Control signals are generated based on the **opcode** (bits [31:26]) and **function code** (bits [5:0]) of the instruction.
+
+![Control unit](../images/digital_design/processor_9.png)
+
+---
+
+### Complete Single-Cycle MIPS Processor
+
+![Complete processor](../images/digital_design/processor_10.png)
+
+---
+
+## 3. Verilog Design
+
+(*To be detailed in the following sections.*)

@@ -68,4 +68,4 @@ The kernel uses this information to initialize drivers and mount the root filesy
 ### 🔹 Phase 4: User-space program
 - Systemd service runs, configure system users, etc.
 - Once system services are up and running (via Systemd), the system reaches a usable state, offering login via serial, SSH, or GUI depending on configuration.
-![Sequence](../images/embedded/boot.png)
+![Sequence](/images/embedded/boot.png)

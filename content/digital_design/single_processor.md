@@ -24,7 +24,7 @@ This blog post explores *microarchitecture*—the specific arrangement of regist
 
 Example:
 
-![State element](../images/digital_design/processor_2.png)
+![State element](/images/digital_design/processor_2.png)
 
 ---
 
@@ -34,7 +34,7 @@ Example:
 
 **State elements:** Program counter, instruction memory, data memory, and register file.
 
-![Datapath](../images/digital_design/processor_1.png)
+![Datapath](/images/digital_design/processor_1.png)
 
 - **Program Counter (PC):** A 32-bit register whose output provides the current instruction address (PC), and whose input (`PC'`) points to the next instruction address.  
 - **Instruction Memory:** Has a single read port. Takes the PC as input (instruction address) and outputs a 32-bit instruction.  
@@ -44,25 +44,25 @@ Example:
 
 a. Instruction Fetch  
 b. Operand Read (Decode)  
-![Decode](../images/digital_design/processor_3.png)
+![Decode](/images/digital_design/processor_3.png)
 
 c. Sign-extend the Immediate  
-![Sign-extend](../images/digital_design/processor_4.png)
+![Sign-extend](/images/digital_design/processor_4.png)
 
 d. Memory Address Computation  
-![Address computation](../images/digital_design/processor_5.png)
+![Address computation](/images/digital_design/processor_5.png)
 
 e. Write Back  
-![Write back](../images/digital_design/processor_6.png)
+![Write back](/images/digital_design/processor_6.png)
 
 f. Determine Next Instruction Address  
-![Next PC](../images/digital_design/processor_7.png)
+![Next PC](/images/digital_design/processor_7.png)
 
 ---
 
 ### Generalized Datapath for R-Type Instruction
 
-![R-type Datapath](../images/digital_design/processor_8.png)
+![R-type Datapath](/images/digital_design/processor_8.png)
 
 ---
 
@@ -70,13 +70,13 @@ f. Determine Next Instruction Address
 
 Control signals are generated based on the **opcode** (bits [31:26]) and **function code** (bits [5:0]) of the instruction.
 
-![Control unit](../images/digital_design/processor_9.png)
+![Control unit](/images/digital_design/processor_9.png)
 
 ---
 
 ### Complete Single-Cycle MIPS Processor
 
-![Complete processor](../images/digital_design/processor_10.png)
+![Complete processor](/images/digital_design/processor_10.png)
 
 ---
 

@@ -49,7 +49,7 @@ Sequential logic circuits produce outputs based on both current inputs and past 
 </ul>
 
 ### General model of digital system
-![General model](./images/digital_design/general_model.png)
+![General model](../images/digital_design/general_model.png)
 
 ## Finite State Machines (FSM)
 - Deterministic finite automata define by the following tuple:

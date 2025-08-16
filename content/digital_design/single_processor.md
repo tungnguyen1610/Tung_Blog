@@ -34,7 +34,7 @@ Example:
 
 **State elements:** Program counter, instruction memory, data memory, and register file.
 
-![Datapath](./images/digital_design/processor_1.png)
+![Datapath](../images/digital_design/processor_1.png)
 
 - **Program Counter (PC):** A 32-bit register whose output provides the current instruction address (PC), and whose input (`PC'`) points to the next instruction address.  
 - **Instruction Memory:** Has a single read port. Takes the PC as input (instruction address) and outputs a 32-bit instruction.  

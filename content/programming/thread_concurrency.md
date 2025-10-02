@@ -18,7 +18,7 @@ Although concurrency allows multitasking, it doesn't always mean true parallel e
 - **Process**: A program in execution. Each process has its own memory space.
 - **Thread**: The smallest unit of execution within a process. Threads within the same process share memory.
 
-> **In C++, we can achieve concurrency using threads.**
+ **In C++, we can achieve concurrency using threads.**
 
 ---
 
@@ -29,12 +29,12 @@ Although concurrency allows multitasking, it doesn't always mean true parallel e
 
 ---
 
-## Synchronization Mechanisms
+## Synchronization Mechanism
 
-- **Mutex**: Stands for *mutual exclusion*. It ensures that only one thread can access a critical section (shared resource) at a time. In embedded systems, this is often referred to as a `CRITICAL_SECTION`.
+- **Semaphore**: A signaling mechanism that allows a limited number of threads to access a shared resource. If the access count exceeds the allowed limit, additional 
+threads are blocked until it becomes available.
 
-- **Semaphore**: A signaling mechanism that allows a limited number of threads to access a shared resource. If the access count exceeds the allowed limit, additional threads are blocked until it becomes available.
-
+- **Mutex**: Stands for *mutual exclusion*. It is a binary semaphore but with **ownership semantics**. It ensures that only one thread can access a critical section (shared resource) at a time. In embedded systems, this is often referred to as a `CRITICAL_SECTION`.
 ---
 
 ## Example: Demonstrating a Race Condition
@@ -52,7 +52,7 @@ void run_concurrent()
     // Mutex lock disabled to show race condition
     // lock_guard<mutex> mu(lck);
 
-    for (long i = 0; i < 100000; i++) {
+    for (long i = 0; i < 1000; i++) {
         counter++;
     }
 
@@ -70,3 +70,7 @@ int main()
     cout << "Sum: " << counter << endl;
     return 0;
 }
+```
+In this example, with proper usage of mutex sum is equal to 100+1000+1000=2100. However, without mutex, multiple threads access counter at the same time. The counter is not atomic operation. It is actually 3 steps: load counter into register, increment register, and store register back to counter. If thread interleave these steps, some increment get lost. Therefore, final value varies less than 2100.
+
+

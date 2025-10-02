@@ -1,11 +1,10 @@
 AUTHOR = 'Tung Nguyen'
 SITENAME = 'Tung Nguyen'
-#SITEURL = 'https://tungnguyen1610.github.io/Tung_Blog/'
 SITEURL=''
 PATH = 'content'
 TIMEZONE = 'Asia/Ho_Chi_Minh'
 DEFAULT_LANG = 'en'
-IGNORE_FILES = ['digital_design/verilog.md']
+IGNORE_FILES = ['digital_design/general_knowledge.md']
 ARTICLE_PATHS = ['embedded_systems', 'digital_design', 'automotive','programming']
 ARTICLE_URL = '{category}/{slug}.html'
 ARTICLE_SAVE_AS = '{category}/{slug}.html'

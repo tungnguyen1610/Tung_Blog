@@ -46,6 +46,7 @@ These constructs improve **readability, synthesis safety, and simulation consist
 
 ## UVM (Universal Verification Methodology)
 In summary, UVM builds on two fundamental base classes:
+
 - **uvm_object**: is a data structure used for testbench configuration and it is the base class available for component and transaction. 
 
 - **uvm_transaction**:  UVM transaction is used for generating stimulus and test cases. For user-defined transaction, **uvm_sequence_item** inherits from this class.
@@ -58,8 +59,10 @@ In summary, UVM builds on two fundamental base classes:
 3. **uvm_sequencer → uvm_driver**: The sequencer delivers transactions to the driver. The driver translates them into pin-level activity on the DUT via an interface.  
 4. **uvm_monitor**: Observes DUT signals, reconstructs transactions, and publishes them using analysis ports.  
 5. **Subscribers and Scoreboard**:  
-- Subscribers collect transactions for functional coverage.  
-- The scoreboard checks transactions against a reference model for correctness.  
+<ul>
+<li> Subscribers collect transactions for functional coverage.</li>
+<li> The scoreboard checks transactions against a reference model for correctness. </li> 
+</ul>
 
 The **UVM config database** is often used to pass configuration objects from higher-level components (like the test) down to lower-level components (env,agent).  
 

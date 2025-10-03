@@ -1,5 +1,5 @@
 Title: Intro to Embedded Linux  
-Date: 2025-05-12 
+Date: 2025-06-12 
 Category: Embedded Systems  
 Tags: Beaglebone Black, SoC, Linux, Bootloader  
 Slug: intro-linux  

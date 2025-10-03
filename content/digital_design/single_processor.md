@@ -1,5 +1,5 @@
 Title: Single Cycle Processor 
-Date: 2025-07-24  
+Date: 2025-09-05  
 Category: Digital VLSI  
 Slug: single-cycle-processor  
 Author: Tung Nguyen  

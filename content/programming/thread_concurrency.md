@@ -1,5 +1,5 @@
 Title: Concurrency  
-Date: 2025-05-23  
+Date: 2025-08-10  
 Category: Programming  
 Tags: Concurrent, thread  
 Summary: Summary about the differences between threads, processes, and programs, with a focus on concurrency threading.
@@ -34,7 +34,7 @@ Although concurrency allows multitasking, it doesn't always mean true parallel e
 - **Semaphore**: A signaling mechanism that allows a limited number of threads to access a shared resource. If the access count exceeds the allowed limit, additional 
 threads are blocked until it becomes available.
 
-- **Mutex**: Stands for *mutual exclusion*. It is a binary semaphore but with **ownership semantics**. It ensures that only one thread can access a critical section (shared resource) at a time. In embedded systems, this is often referred to as a `CRITICAL_SECTION`.
+- **Mutex**: Stands for *mutual exclusion*. It is a binary semaphore but with **ownership semantics**. It ensures that only one thread can access a critical section (shared resource) at a time. In embedded systems, this is often referred to as a **CRITICAL_SECTION**.
 ---
 
 ## Example: Demonstrating a Race Condition
@@ -72,5 +72,3 @@ int main()
 }
 ```
 In this example, with proper usage of mutex sum is equal to 100+1000+1000=2100. However, without mutex, multiple threads access counter at the same time. The counter is not atomic operation. It is actually 3 steps: load counter into register, increment register, and store register back to counter. If thread interleave these steps, some increment get lost. Therefore, final value varies less than 2100.
-
-

@@ -1,6 +1,6 @@
 Title: Single Cycle Processor 
 Date: 2025-07-24  
-Category: Digital Design  
+Category: Digital VLSI  
 Slug: single-cycle-processor  
 Author: Tung Nguyen  
 Summary: MIPS microprocessor design  

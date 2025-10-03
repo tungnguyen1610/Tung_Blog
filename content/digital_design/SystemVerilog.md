@@ -26,17 +26,17 @@ Interfaces provide a way to encapsulate and bundle signals into a single logical
 ## Specialized Always Blocks
 SystemVerilog introduces specialized procedural blocks to clearly define design intent.   
 
-- **always_comb**  
+1. **always_comb**  
   - Used to describe **combinational logic**.  
   - Sensitivity list is inferred automatically.  
   - Prevents accidental latch inference
 
-- **always_ff**  
+2. **always_ff**  
   - Used to describe **sequential logic (flip-flops, registers)**.  
   - Requires an edge-sensitive event control (`posedge` or `negedge`).  
   - Prevents latch inference inside.  
 
-- **always_latch**  
+3. **always_latch**  
   - Used to describe **level-sensitive latches**.  
   - Ensures latches are intentional and explicit in design.  
 
@@ -49,7 +49,7 @@ In summary, UVM builds on two fundamental base classes:
 - **uvm_object**: is a data structure used for testbench configuration and it is the base class available for component and transaction. 
 
 - **uvm_transaction**:  UVM transaction is used for generating stimulus and its analysis. 
-  - `uvm_sequence_item` (user-defined transactions)  
+  + `uvm_sequence_item` (user-defined transactions)  
 
 - **uvm_component**: A base class for hierachial testbench components. Examples include:  
   - `uvm_env`, `uvm_agent`, `uvm_driver`, `uvm_sequencer`, `uvm_monitor`, and `uvm_test`.  
@@ -81,9 +81,9 @@ apb_transaction class object will be a transaction that can be sent from compone
 
 
 Common TLM interfaces include:  
-- **put_port / export** → Push transactions. The receiver will implement the **put** port
-- **get_port / export** → Pull transactions. The sender define the **get**port
-- **tlm_fifo** → Provides queue-like storage for transactions.  
+1. **put_port / export** → Push transactions. The receiver will implement the **put** port
+2. **get_port / export** → Pull transactions. The sender define the **get**port
+3. **tlm_fifo** → Provides queue-like storage for transactions.  
 
 ### Factory
 The **UVM factory mechanism** allows the user to subsitute an existing class object by any of its inherited child class objects. Therefore classes needs to be registered with the factory via UVM macros **uvm_object_utils**, **`uvm_component_utils** .

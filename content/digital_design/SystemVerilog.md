@@ -27,18 +27,18 @@ Interfaces provide a way to encapsulate and bundle signals into a single logical
 SystemVerilog introduces specialized procedural blocks to clearly define design intent.   
 
 1. **always_comb**  
-  - Used to describe **combinational logic**.  
-  - Sensitivity list is inferred automatically.  
-  - Prevents accidental latch inference
+  Used to describe **combinational logic**.  
+  Sensitivity list is inferred automatically.  
+  Prevents accidental latch inference
 
 2. **always_ff**  
-  - Used to describe **sequential logic (flip-flops, registers)**.  
-  - Requires an edge-sensitive event control (`posedge` or `negedge`).  
-  - Prevents latch inference inside.  
+  Used to describe **sequential logic (flip-flops, registers)**.  
+  Requires an edge-sensitive event control (`posedge` or `negedge`).  
+  Prevents latch inference inside.  
 
 3. **always_latch**  
-  - Used to describe **level-sensitive latches**.  
-  - Ensures latches are intentional and explicit in design.  
+  Used to describe **level-sensitive latches**.  
+  Ensures latches are intentional and explicit in design.  
 
 These constructs improve **readability, synthesis safety, and simulation consistency** compared to traditional `always` blocks.  
 
@@ -48,11 +48,9 @@ These constructs improve **readability, synthesis safety, and simulation consist
 In summary, UVM builds on two fundamental base classes:
 - **uvm_object**: is a data structure used for testbench configuration and it is the base class available for component and transaction. 
 
-- **uvm_transaction**:  UVM transaction is used for generating stimulus and its analysis. 
-  + `uvm_sequence_item` (user-defined transactions)  
+- **uvm_transaction**:  UVM transaction is used for generating stimulus and test cases. For user-defined transaction, **uvm_sequence_item** inherits from this class.
 
-- **uvm_component**: A base class for hierachial testbench components. Examples include:  
-  - `uvm_env`, `uvm_agent`, `uvm_driver`, `uvm_sequencer`, `uvm_monitor`, and `uvm_test`.  
+- **uvm_component**: A base class for hierachial testbench components. Examples include: `uvm_env`, `uvm_agent`, `uvm_driver`, `uvm_sequencer`, `uvm_monitor`, and `uvm_test`.  
 
 ### Typical UVM Hierarchy and Flow
 1. **uvm_test**: Top-level entry point. Configures the environment and launches test sequences.  
@@ -60,8 +58,8 @@ In summary, UVM builds on two fundamental base classes:
 3. **uvm_sequencer → uvm_driver**: The sequencer delivers transactions to the driver. The driver translates them into pin-level activity on the DUT via an interface.  
 4. **uvm_monitor**: Observes DUT signals, reconstructs transactions, and publishes them using analysis ports.  
 5. **Subscribers and Scoreboard**:  
-   - Subscribers collect transactions for functional coverage.  
-   - The scoreboard checks transactions against a reference model for correctness.  
+- Subscribers collect transactions for functional coverage.  
+- The scoreboard checks transactions against a reference model for correctness.  
 
 The **UVM config database** is often used to pass configuration objects from higher-level components (like the test) down to lower-level components (env,agent).  
 
@@ -81,9 +79,9 @@ apb_transaction class object will be a transaction that can be sent from compone
 
 
 Common TLM interfaces include:  
-1. **put_port / export** → Push transactions. The receiver will implement the **put** port
-2. **get_port / export** → Pull transactions. The sender define the **get**port
-3. **tlm_fifo** → Provides queue-like storage for transactions.  
+- **put_port / export** → Push transactions. The receiver will implement the **put** port
+- **get_port / export** → Pull transactions. The sender define the **get**port
+- **tlm_fifo** → Provides queue-like storage for transactions.  
 
 ### Factory
 The **UVM factory mechanism** allows the user to subsitute an existing class object by any of its inherited child class objects. Therefore classes needs to be registered with the factory via UVM macros **uvm_object_utils**, **`uvm_component_utils** .

@@ -33,7 +33,6 @@ Although concurrency allows multitasking, it doesn't always mean true parallel e
 
 - **Semaphore**: A signaling mechanism that allows a limited number of threads to access a shared resource. If the access count exceeds the allowed limit, additional 
 threads are blocked until it becomes available.
-
 - **Mutex**: Stands for *mutual exclusion*. It is a binary semaphore but with **ownership semantics**. It ensures that only one thread can access a critical section (shared resource) at a time. In embedded systems, this is often referred to as a **CRITICAL_SECTION**.
 ---
 

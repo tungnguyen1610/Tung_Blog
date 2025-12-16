@@ -1,27 +1,74 @@
 {% extends "base.html" %}
-{% block title %}Articles by {{ author }}{% endblock %}
+
+{% block title %}About {{ author }}{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{{ SITEURL }}/static/css/about.css">
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+{% endblock %}
 
 {% block content %}
-<article class="body">
-  <h1>About</h1>
-  <p>Hello! I'm {{ author }}. I created the blog to share knowledge in embedded systems, digital design, and automotive tech.
-  This space is for students, engineers, and anyone curious about electronics. Enjoy your learning journey!</p>
 
-</article>
-<article class="body">
-  <h2>Professional Background</h1>
-  <p>
-    I am currently pursuing a BSc in Electrical Engineering at Budapest University of Technology and Economics. With a strong foundation in programming, embedded systems, digital design, and computer architecture, I strive to bridge theory and practice. My goal is to contribute to innovative projects that shape the future of technology.  
-   <br> <strong>Tech stacks:</strong> Assembly, MISRA C, C++, Python, SystemVerilog
-  </p>
+<article class="body profile-header">
+  <div class="profile-info">
+    <h1>{{ author }}</h1>
+    <p>Embedded Systems | Digital Design | Automotive Tech</p>
+  </div>
 </article>
 
-<article class="body">
-  <h2>Articles by {{ author }}</h2>
+<article class="body card-section">
+  <h2><i class="fas fa-user-graduate"></i> Professional Background</h2>
+  <ul class="experience-list">
+    <li>
+      <strong>BSc in Electrical Engineering</strong>,
+      Budapest University of Technology and Economics<br>
+      <span>2022 Sep – 2026 Jan</span>
+    </li>
+    <li>
+      <strong>Embedded Software Engineer (Part-Time)</strong>,
+      Knorr-Bremse<br>
+      <span>2023 – 2024</span>
+    </li>
+    <li>
+      <strong>Research Assistant</strong><br>
+      <span>2022 – Present</span>
+    </li>
+  </ul>
+
+  <div class="tech-stack">
+    <strong>Tech stacks:</strong>
+    Assembly, MISRA C, C++, Python, SystemVerilog, Automotive (Autosar, CAN, UDS), Microcontrollers, Circuit. 
+  </div>
+</article>
+
+<article class="body card-section">
+  <h2><i class="fas fa-book"></i> Publications</h2>
+  <ul class="publication-list">
+    <li>
+      <strong>Improved Low-Cost PTP Grandmaster Clock Utilizing the Beaglebone Black Single Board Computer</strong><br>
+      <span>2025 IEEE International Symposium on Precision Clock Synchronization for Measurement, Control, and Communication (ISPCS)</span>
+    </li>
+    <li>
+      <strong>Low-Cost PTP Grandmaster Clock Utilizing the Beaglebone Black Single Board Computer</strong><br>
+      <span>2025 26th International Carpathian Control Conference (ICCC)</span>
+    </li>
+    <li>
+      <strong>Self-Calibrating Frequency Meter</strong><br>
+      <span>BSC Thesis</span>
+    </li>
+  </ul>
+</article>
+
+<article class="body card-section">
+  <h2><i class="fas fa-newspaper"></i> Articles by {{ author }}</h2>
   <ul>
     {% for article in articles %}
-      <li><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></li>
+      <li>
+        <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+      </li>
     {% endfor %}
   </ul>
 </article>
+
 {% endblock %}
